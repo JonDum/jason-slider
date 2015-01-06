@@ -1,0 +1,40 @@
+  <polymer-element name='jason-slider'>
+       <template>
+        <div>
+          {{min}}
+          <input type='range' value="{{value}}" min="{{min}}" max="{{max}}">
+          {{max}}
+          Current value: {{ value }} 
+        </div>
+        <div>
+          
+        </div>
+      
+       </template>
+       <script>
+         Polymer({
+           
+           publish: {
+              min: 0,
+              max: 100,
+              value: 50
+           },
+           
+           get sliderPosition() {
+             return (this.min + this.value)/this.max/100;
+           }, 
+           
+           
+           valueChanged: function() {
+             this.fire('change', {value: this.value});
+           },
+           
+           setToMinimum: function() {
+             this.value = this.min;
+           }
+           
+         })
+       </script>
+  </polymer-element>
+  
+  
